@@ -1,9 +1,287 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<title>Test</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Frontend Developer / Graphic Artist</title>
+
+	<!-- css -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/bigvideo.css">
+	<link rel="stylesheet" href="style.css">
 </head>
-<body>
-	<h1>Hello World</h1>
+<body data-spy="scroll" data-target="#main-nav-container" data-offset="60">
+
+	<!-- header -->
+	<header id="home" class="text-center full-screen padding-lg-top river-transparent">
+		<h1 class="brand">Alvin Labrador</h1>
+		<h2 class="uppercase subtitle">Frontend / Graphic Design</h2>
+		<nav class="main-nav-container" id="main-nav-container">
+			<!-- <a href="#" class="toggle-nav">Menu</a> -->
+			<ul class="main-nav nav">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#work">Work</a></li>
+				<li><a href="#blog">From the Blog</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- about -->
+	<section id="about" class="white padding-lg">
+		<div class="container">
+			<h2 class="river-text">About</h2>
+			<p>I'm a frontend developer and graphic artist from the Philippines. <br />I love creating websites. I love making clients happy. :)</p>
+
+			<p>Here are some of my skills:</p>
+
+			<div class="row text-left padding-sm-bottom">
+				<div class="col-sm-4">
+					<div class="skill">
+						<i class="fa fa-html5"></i>
+						<h6 class="uppercase river-text strong">html5</h6>
+						<p>I create website using clean, semantic and w3c valid HTML5 pages.</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="skill">
+						<i class="fa fa-css3"></i>
+						<h6 class="uppercase river-text strong">css3</h6>
+						<p>I'm using CSS3 to add nice effects and transitions enhancing the user's experience.</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="skill">
+						<i class="fa fa-magic"></i>
+						<h6 class="river-text strong">jQuery</h6>
+						<p>I used the most popular javascript library to improve interactivity of the website that can't be achieve using plain css.</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="skill">
+						<i class="fa fa-mobile"></i>
+						<h6 class="river-text strong">Responsive</h6>
+						<p>I create responsive websites that looks good on any mobile device.</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="skill">
+						<i class="fa fa-pencil"></i>
+						<h6 class="river-text strong">Graphic Design</h6>
+						<p>Website looks better with graphics on it. I also design website graphics, banners, logos, flyers, etc..</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="skill">
+						<i class="fa fa-bolt"></i>
+						<h6 class="river-text strong">Website Optimizaton</h6>
+						<p>Hate your website loading so slow? I can help you with that.</p>
+					</div>
+				</div>
+			</div>
+
+			<p>Need someone for your website?</p>
+			<a href="#contact" class="btn btn-lg btn-info">Get In Touch</a>
+		</div>
+	</section>
+
+	<!-- work -->
+	<section id="work" class="river-transparent padding-lg">
+		<div class="container">
+
+			<h2>My Works</h2>
+			<p class="lead">Here are some of my recent projects.</p>
+
+			<div class="padding-sm row">
+				<div class="col-sm-3 col-xs-12">
+					<figure class="work-item">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<figcaption>
+							<h6>Project Title</h6>
+							<a href="#" class="work-link"><i class="fa fa-search"></i></a>
+							<a href="#" class="work-link"><i class="fa fa-link"></i></a>
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="col-sm-3 col-xs-12">
+					<figure class="work-item">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<figcaption>
+							<h6>Project Title</h6>
+							<a href="#" class="work-link"><i class="fa fa-search"></i></a>
+							<a href="#" class="work-link"><i class="fa fa-link"></i></a>
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="col-sm-3 col-xs-12">
+					<figure class="work-item">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<figcaption>
+							<h6>Project Title</h6>
+							<a href="#" class="work-link"><i class="fa fa-search"></i></a>
+							<a href="#" class="work-link"><i class="fa fa-link"></i></a>
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="col-sm-3 col-xs-12">
+					<figure class="work-item">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<figcaption>
+							<h6>Project Title</h6>
+							<a href="#" class="work-link"><i class="fa fa-search"></i></a>
+							<a href="#" class="work-link"><i class="fa fa-link"></i></a>
+						</figcaption>
+					</figure>
+				</div>
+				
+			</div>
+
+			<a href="http://mryozzo.info" class="btn btn-lg btn-primary">View More Projects</a>
+
+		</div>
+	</section>
+
+	<!-- blog -->
+	<section id="blog" class="white padding-lg">
+		<div class="container">
+
+			<h2 class="river-text">From the Blog</h2>
+			<p class="lead">I wrote some articles that might help you learn something new.</p>
+
+			<div class="padding-sm row">
+
+				<div class="col-sm-4 col-xs-12">
+					<div class="blog-item text-left">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<div class="blog-preview">
+							<h6 class="strong river-text">Blog Title Goes Here</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper luctus sapien, non iaculis felis malesuada quis. Cras id consequat dolor, consequat viverra lacus.</p>
+							<a href="#" class="btn btn-sm btn-primary">Read More</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4 col-xs-12">
+					<div class="blog-item text-left">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<div class="blog-preview">
+							<h6 class="strong river-text">Blog Title Goes Here</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper luctus sapien, non iaculis felis malesuada quis. Cras id consequat dolor, consequat viverra lacus.</p>
+							<a href="#" class="btn btn-sm btn-primary">Read More</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4 col-xs-12">
+					<div class="blog-item text-left">
+						<img src="assets/img/sample-img.jpg" alt="" />
+						<div class="blog-preview">
+							<h6 class="strong river-text">Blog Title Goes Here</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper luctus sapien, non iaculis felis malesuada quis. Cras id consequat dolor, consequat viverra lacus.</p>
+							<a href="#" class="btn btn-sm btn-primary">Read More</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<a href="#" class="btn btn-lg btn-info">View More Articles</a>
+
+		</div>
+	</section>
+
+	<!-- contact -->
+	<section id="contact" class="asphalt-transparent padding-lg-top">
+		<div class="container short">
+
+			<h2>Get In Touch</h2>
+			<p class="lead">You're reach this part of the page. I assumed you're interested to drop me message. Don't hesitate to contact me for projects :)</p>
+
+			<form action="/#wpcf7-f83-p5-o1" method="post" class="wpcf7-form text-left padding-sm" novalidate="novalidate">
+
+				<div class="row">
+					<div class="col-sm-6 col-xs-12">
+						<label for="your-name">Your Name (required)</label>
+					    <span class="wpcf7-form-control-wrap your-name">
+					    	<input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false">
+					    </span>
+					</div>
+
+					<div class="col-sm-6 col-xs-12">
+						<label for="your-email">Your Email (required)</label>
+					    <span class="wpcf7-form-control-wrap your-email">
+					    	<input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control" aria-required="true" aria-invalid="false">
+					    </span>
+					</div>
+				</div>
+				
+				<div>
+					<label for="your-subject">Subject</label>
+				    <span class="wpcf7-form-control-wrap your-subject">
+				    	<input type="text" name="your-subject" value="" size="40" class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false">
+				    </span>
+				</div>
+				
+				
+				<div>
+					<label for="your-message">Your Message</label>
+				    <span class="wpcf7-form-control-wrap your-message">
+				    	<textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea form-control" aria-invalid="false"></textarea>
+				    </span>
+				</div>
+				<p>
+					<input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit btn btn-lg btn-info btn-block">
+					<img class="ajax-loader" src="http://www.mryozzo.info/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden;">
+				</p>
+				<div class="wpcf7-response-output wpcf7-display-none"></div>
+			</form>
+
+		</div>
+		<div class="map-wrapper">
+			<div id="map"></div>
+		</div>
+	</section>
+
+	<footer class="text-center asphalt padding-sm">
+
+		<ul class="social-media">
+            <li><a href="skype:alvin.labrador?call" class="skype transition"><i class="fa fa-skype"></i></a></li>
+            <li><a href="mailto:mryozzo1130@yahoo.com?Subject=Hi%20Alvin!" class="mail transition"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="tel:+639218333709" class="mobile transition"><i class="fa fa-mobile"></i></a></li>
+            <li><a href="//www.facebook.com/mr.yozzo912" class="fb transition"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="//www.linkedin.com/in/mryozzo" class="ln transition"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="//plus.google.com/u/0/+AlvinLabrador/" class="gp transition"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="//dribbble.com/mryozzo" class="db transition"><i class="fa fa-dribbble"></i></a></li>
+        </ul>
+
+		<a href="#">©2014 Mryozzo</a>
+	</footer>
+
+	<a href="#home" class="go-top"><i class="fa fa-angle-up"></i></a>
+
+	<!-- js files -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+	<script src="//maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+	<script src="assets/js/gmap3.min.js"></script>
+	<script src="//vjs.zencdn.net/4.3/video.js"></script>
+	<script src="assets/js/bigvideo.js"></script>
+	<script src="assets/js/modernizr.custom.28749.js"></script>
+	<script src="assets/js/jquery.hoverdir.js"></script>
+	<script src="assets/js/scripts.js"></script>
 </body>
 </html>
