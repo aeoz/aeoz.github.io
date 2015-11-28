@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        div[class*="col"] {
+          background: #cccccc;
+        }
+        .bunotcontainer {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .bunotNumber {
+            width: 5%;
+            height: 80px;
+            line-height: 80px;
+            font-size: 24px;
+            text-align: center;
+            float: left;
+            cursor: pointer;
+            position: relative;
+            font-weight: bold;
+        }
+        .bunotNumber:after, .bunotNumber span {
+            -webkit-backface-visibility: hidden;   
+            position: absolute;
+            width: 100%;
+            height: 80px;
+            display: block;
+            top: 0;
+            left: 0;
+            -webkit-transition: all .4s ease-in-out;
+            color: #fff;
+        }
+        .bunotNumber span {
+            background: #ff0;
+            -webkit-transform: rotateY(-180deg);
+            color: #000;
+        }
+        .bunotNumber:after {
+            content: '?';
+            background: #000;
+            -webkit-transform: rotateY(0deg);
+        }
+        .bunotNumber.active span {
+            -webkit-transform: rotateY(0deg);
+        }
+        .bunotNumber.active:after {
+            -webkit-transform: rotateY(-180deg);
+        }
+        /*hide number*/
+        .bunotNumber.active {
+            opacity: 0
+        }
+        .thenumberselected {
+            display: table;
+            position: fixed;
+            z-index: 99;
+            text-align: center;
+            padding: 0;
+            font-size: 200px;
+            background: #ff0;
+            color: #000;
+            -webkit-transform: scale(0);
+            transform-origin: 50%;
+            left: 0;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            pointer-events: none;
+            -webkit-transition: all .4s ease-in-out;
+        }
+        .thenumberselected div {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .thenumberselected.show1 {
+            pointer-events: auto;
+            -webkit-transform: scale(1);
+        }
+        @media (max-width: 800px) {
+            .bunotNumber {
+                width: 12.5%;
+            }
+        }
+        @media (max-width: 767px) {
+            .bunotNumber {
+                width: 33.33333333333333%
+            }
+        }
+    </style>
+
+  </head>
+  <body>
+      
+    <main>
+        <div class="thenumberselected">
+            <div></div>
+        </div>
+        <div class="bunotcontainer">
+
+        </div>
+
+    </main>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            var ar=[];
+
+            for (var i = 1, ar = []; i < 201; i++) {
+                ar[i] = i;
+            }
+
+            ar.sort(function () {
+              return Math.random() - 0.5;
+            });
+
+            console.log(ar);   
+
+            for(x=0;x<200;x++) {
+                $('.bunotcontainer').append('<div class="bunotNumber"><span>'+ar[x]+'</span></div>');
+            }
+
+            $(document).on('click','.bunotNumber',function(){
+                // $(this).addClass('active');
+                var numberselected = $(this).children('span').text();
+                $(this).remove();
+                // setTimeout(function(){
+                //     alert()
+                // });
+                $('.thenumberselected div').text(numberselected);
+                $('.thenumberselected').addClass('show1');
+            });
+
+            $(document).on('click','.active',function(){
+                // $(this).css({'opacity': 0});
+            });
+
+            $('.thenumberselected, .thenumberselected div').click(function(){
+                $(this).removeClass('show1');
+            });
+        });
+    </script>
+
+  </body>
+</html>
