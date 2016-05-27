@@ -1,0 +1,253 @@
+<html>
+<head>
+	<title>Invoice Generator</title>
+	<style type="text/css">
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		font-family: "Arial","sans-serif";
+		padding: 30px;
+		font-size: 9px;
+		line-height: 1.6;
+	}
+	.invoice-title {
+		border-left: double #1F4E79 6.75pt;
+		font-size: 12.0pt;
+	    font-family: "Arial","sans-serif";
+	    color: #5B9BD5;
+	    margin: 0 0 50px;
+	    padding: 0 0 0 20px;
+	    font-weight: bold;
+	}
+	.invoice-title h1 {
+		font-size: 19.0pt;
+	    font-family: "Arial Black","sans-serif";
+	    color: #1F4E79;
+	    text-transform: uppercase;
+	}
+	h2 {
+		font-size: 14.0pt;
+	    font-family: "Arial","sans-serif";
+	    color: #1F4E79;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    margin: 0 0 20px;
+	}
+	table {
+		width: 100.0%;
+	    border-collapse: collapse;
+	    border: none;
+	    font-size: 10pt;
+	    margin: 0 0 30px;
+	}
+	td, th {
+	    border-top: solid #5B9BD5 1px;
+	    padding: 10px;
+	    text-align: left;
+	}
+	th {
+		background: #DEEAF6;
+		font-weight: bold;
+	}
+	#blank td {
+		border: 0;
+	}
+	#invoice-table th{
+		border-bottom: solid #5B9BD5 1px;
+	}
+	#invoice-table tbody td {
+		border-top: 0;
+		border-bottom: 1px dashed #5B9BD5;
+	}
+	tfoot td {
+		background: #5B9BD5;
+		color: #fff;
+		font-weight: bold;
+	}
+	.no-border {
+		border: 0;
+	}
+	p {
+		margin: 0 0 20px;
+	}
+	.text-right {
+		text-align: right;
+	}
+	.text-left{
+		text-align: left;
+	}
+	form {
+		border-radius: 10px;
+		padding: 20px;
+		display: block;
+		margin: 0 auto 50px;
+		max-width: 500px;
+		border: 1px solid #eee;
+		text-align: center;
+	}
+	input, textarea {
+		display: block;
+		width: 100%;
+		border-radius: 4px;
+		border: 1px solid #eaeaea;
+		padding: 10px;
+		text-align: left;
+		font-size: 10pt;
+		margin: 0 0 20px;
+		font-family: "Arial","sans-serif";
+	}
+	textarea {
+		min-height: 200px;
+	}
+	button {
+		display: inline-block;
+		padding: 15px;
+		border-radius: 500px;
+		border: 0;
+		background: #0084ff;
+		color: #fff;
+		outline: 0;
+		cursor: pointer;
+	}
+	@media screen {
+		.hidden-on-web, .hidden-on-web * {
+			display: none !important;
+		}
+	}
+	@media print {   
+		.hidden-on-web, .hidden-on-web * {
+			-webkit-print-color-adjust: exact;
+		} 
+	    .no-print, .no-print *
+	    {
+	        display: none !important;
+	    }
+	}
+	</style>
+</head>
+<body>
+	<form action="#" class="no-print">
+		<input type="text" name="date" id="date" placeholder="Invoice Date">
+		<input type="text" name="invoice-number" id="invoice-number" placeholder="Invoice Number">
+		<textarea id="tasks" placeholder="Tasks and Hours"></textarea>
+		<button id="print-invoice">Print Invoice</button>
+	</form>
+
+
+	<div class="hidden-on-web">
+		<div class="invoice-title">
+			<h1>Alvin Labrador</h1>
+			<span class="date-today">May 20, 2016</span>
+		</div>
+
+		<h2>Invoice #<span class="invoice-number">28</span></h2>
+
+		<table>
+			<tr>
+				<th colspan="2">Bill To</th>
+			</tr>
+			<tr>
+				<td width="37%">
+						<b>Customer</b><br>
+						<b>Address</b><br><br><br>
+						<b>Phone</b>
+				</td>
+				<td>
+						<b>Alternative Media Pty Ltd</b><br>
+						Suite 605, 3 Waverley Street, Bondi Junction NSW 2022 Australia<br><br><br>
+						0467 593 741
+				</td>
+			</tr>
+			<tr>
+				<td width="37%">
+					<b>Payment Due</b>
+				</td>
+				<td>
+					<span class="due-date">May 30, 2016</span>
+				</td>
+			</tr>
+		</table>
+
+		<table id="invoice-table">
+			<thead>
+				<tr>
+					<th width="9%">Hours</th>
+					<th width="44%">Task</th>
+					<th width="32%" class="text-right">Hourly Rate</th>
+					<th width="14%" class="text-right">Sub-Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="blank">
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td class="text-right">Total</td>
+					<td class="text-right the-total">$457.601</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var datetoday = moment().format('MMMM D, YYYY'), tasks_list, duedate, rate=12.5, totalhours=0;
+			$('#date').val(datetoday);
+			// invoice number
+			$('#invoice-number').keyup(function(){
+				$('.invoice-number').text($(this).val());
+			});
+			$('#print-invoice').click(function(e){
+				e.preventDefault();
+				duedate = moment($('#date').val()).add(3, 'days').format('MMMM D, YYYY');
+				// due date
+				$('.due-date').text(duedate);
+				$('.date-today').text($('#date').val());
+
+				// tasks
+				tasks_list = $('#tasks').val().split(/\n/);
+				
+				for(i=0;i<tasks_list.length;i++) {
+
+					currenttask = tasks_list[i].split(' ');
+					taskname = currenttask[0];
+					taskhours = converthours(currenttask[1]);
+					chargehours = rate * taskhours;
+					totalhours = totalhours + chargehours;
+					$('.the-total').text('$'+parseFloat(totalhours.toFixed(3)));
+					$( "<tr><td>"+taskhours+"</td><td>"+taskname+"</td><td class='text-right'>$"+rate+"</td><td class='text-right'>$"+parseFloat(chargehours.toFixed(3))+"</td></tr>" ).insertBefore("#blank" );
+					console.log(totalhours);
+				}
+
+				window.print();
+
+			});
+
+			function converthours(hours){
+				var x = hours.split(':');
+				x1 = parseInt(x[2]) / 60;
+				x2 = (parseInt(x[1]) + x1) / 60;
+				x3 = parseInt(x[0]) + x2;
+				x3 = parseFloat(x3).toFixed(3);
+				return x3;
+
+			}
+
+
+
+		});
+	</script>
+</body>
+</html>
