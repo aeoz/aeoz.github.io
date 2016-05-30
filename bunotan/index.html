@@ -33,6 +33,7 @@
             cursor: pointer;
             position: relative;
             font-weight: bold;
+            border: 1px solid #3c3c3c;
         }
         .bunotNumber:after, .bunotNumber span {
             -webkit-backface-visibility: hidden;   
@@ -65,6 +66,9 @@
         .bunotNumber.active {
             opacity: 0
         }
+        .bunotNumber.selected {
+            opacity: .4;
+        }
         .thenumberselected {
             display: table;
             position: fixed;
@@ -91,6 +95,10 @@
         .thenumberselected.show1 {
             pointer-events: auto;
             -webkit-transform: scale(1);
+        }
+        .thenumberselected.show1.animated-fetti {
+            background-image: url('64-FallingConfetti.gif');
+            background-repeat: repeat;
         }
         @media (max-width: 800px) {
             .bunotNumber {
@@ -124,6 +132,13 @@
 
     <script type="text/javascript">
         $(function(){
+
+            var win = document.createElement('audio');
+            win.setAttribute('src', 'win.mp3');
+
+            var failed = document.createElement('audio');
+            failed.setAttribute('src', 'failed.mp3');
+
             var ar=[];
 
             for (var i = 1, ar = []; i < 201; i++) {
@@ -141,23 +156,35 @@
             }
 
             $(document).on('click','.bunotNumber',function(){
-                // $(this).addClass('active');
-                var numberselected = $(this).children('span').text();
-                $(this).remove();
-                // setTimeout(function(){
-                //     alert()
-                // });
-                $('.thenumberselected div').text(numberselected);
-                $('.thenumberselected').addClass('show1');
+                win.pause();
+                win.currentTime = 0;
+                failed.pause();
+                failed.currentTime = 0;
+                $('.thenumberselected').removeClass('animated-fetti');
+                if($(this).hasClass('selected')) {
+                    return false;
+                } else {
+                    var numberselected = $(this).children('span').text();
+                    $('.thenumberselected div').text(numberselected);
+                    $(this).addClass('selected');
+                    if(numberselected.indexOf('0') > -1) {
+                        $('.thenumberselected').addClass('animated-fetti show1');
+                        win.play();
+                    } else {
+                        failed.play();
+                        $('.thenumberselected').addClass('show1');
+                    }
+                    
+                }
+                
             });
 
-            $(document).on('click','.active',function(){
-                // $(this).css({'opacity': 0});
-            });
 
             $('.thenumberselected, .thenumberselected div').click(function(){
                 $(this).removeClass('show1');
             });
+
+            
         });
     </script>
 
