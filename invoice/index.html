@@ -28,13 +28,17 @@
 	    color: #1F4E79;
 	    text-transform: uppercase;
 	}
-	h2 {
+	h2, h3 {
 		font-size: 14.0pt;
 	    font-family: "Arial","sans-serif";
 	    color: #1F4E79;
 	    text-transform: uppercase;
 	    font-weight: bold;
-	    margin: 0 0 20px;
+	    margin: 0;
+	}
+	h3 {
+		font-size: 11.0pt;
+		margin: 0 0 20px;
 	}
 	table {
 		width: 100.0%;
@@ -144,6 +148,7 @@
 		</div>
 
 		<h2>Invoice #<span class="invoice-number">28</span></h2>
+		<h3>Currency: USD</h3>
 
 		<table>
 			<tr>
@@ -193,7 +198,7 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td class="text-right">Total</td>
-					<td class="text-right the-total">$457.601</td>
+					<td class="text-right the-total">$457.601 USD</td>
 				</tr>
 			</tfoot>
 		</table>
@@ -226,7 +231,7 @@
 					taskhours = converthours(currenttask[1]);
 					chargehours = rate * taskhours;
 					totalhours = totalhours + chargehours;
-					$('.the-total').text('$'+parseFloat(totalhours.toFixed(3)));
+					$('.the-total').text('$'+parseFloat(totalhours.toFixed(3))+' USD');
 					$( "<tr><td>"+taskhours+"</td><td>"+taskname+"</td><td class='text-right'>$"+rate+"</td><td class='text-right'>$"+parseFloat(chargehours.toFixed(3))+"</td></tr>" ).insertBefore("#blank" );
 					console.log(totalhours);
 				}
