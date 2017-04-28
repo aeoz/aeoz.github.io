@@ -207,12 +207,55 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 	<script type="text/javascript">
+		// Cookie Functions
+		function setCookie(cname, cvalue, exdays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		    var expires = "expires="+ d.toUTCString();
+		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+		    var name = cname + "=";
+		    var decodedCookie = decodeURIComponent(document.cookie);
+		    var ca = decodedCookie.split(';');
+		    for(var i = 0; i <ca.length; i++) {
+		        var c = ca[i];
+		        while (c.charAt(0) == ' ') {
+		            c = c.substring(1);
+		        }
+		        if (c.indexOf(name) == 0) {
+		            return c.substring(name.length, c.length);
+		        }
+		    }
+		    return "";
+		}
+
+		function checkCookie(cname) {
+			var checkresult = false;
+		    var cname=getCookie(cname);
+		    if (cname != "") {
+		    	checkresult = true;
+		    } else {
+		    	checkresult = false;
+		    }
+		    return checkresult;
+		}
+
+
 		$(function(){
 			var datetoday = moment().format('MMMM D, YYYY'), tasks_list, duedate, rate=12.5, totalhours=0;
 			$('#date').val(datetoday);
+			$('#date').keyup(function(){
+				datetoday = $(this).val()
+			});
+
+
+			var invoiceNumber = (getCookie('invoiceNumber') ? parseInt(getCookie('invoiceNumber')) + 1 : '' );
 			// invoice number
+			$('#invoice-number').val(invoiceNumber);
 			$('#invoice-number').keyup(function(){
-				$('.invoice-number').text($(this).val());
+				invoiceNumber = $(this).val();
 			});
 			$('#print-invoice').click(function(e){
 				e.preventDefault();
@@ -226,15 +269,17 @@
 				
 				for(i=0;i<tasks_list.length;i++) {
 
-					currenttask = tasks_list[i].split(' ');
+					currenttask = tasks_list[i].split('\t');
 					taskname = currenttask[0];
-					taskhours = converthours(currenttask[1]);
+					taskhours = converthours(currenttask.slice(-1).pop());
 					chargehours = rate * taskhours;
 					totalhours = totalhours + chargehours;
 					$('.the-total').text('$'+parseFloat(totalhours.toFixed(3))+' USD');
 					$( "<tr><td>"+taskhours+"</td><td>"+taskname+"</td><td class='text-right'>$"+rate+"</td><td class='text-right'>$"+parseFloat(chargehours.toFixed(3))+"</td></tr>" ).insertBefore("#blank" );
 					console.log(totalhours);
 				}
+
+				setCookie('invoiceNumber', invoiceNumber, 8)
 
 				window.print();
 
